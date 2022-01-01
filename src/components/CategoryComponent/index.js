@@ -1,12 +1,30 @@
 import React, { useState } from 'react'
 import './category.css'
 
-const list = ['Latest', 'Now Playing', 'Popular', 'Top Rated', 'Upcoming']
-const CategoryComponent = ({ valueSearch, onChangeSearch }) => {
+const list = [
+  {
+    label: 'Now Playing',
+    category: 'now_playing'
+  }, 
+  {
+    label:'Popular',
+    category: 'popular'
+  }, 
+  {
+    label: 'Top Rated',
+    category: 'top_rated'
+  }, 
+  {
+    label: 'Upcoming',
+    category: 'upcoming'
+  }]
+const CategoryComponent = ({ valueSearch, onChangeSearch, setCategory, setPage }) => {
   const [index, setIndex] = useState(0)
 
-  const handleClick = (params) => {
+  const handleClick = (params, categ) => {
     setIndex(params)
+    setCategory && setCategory(categ)
+    setPage && setPage(1)
   }
   return (
     <div className='category-container'>
@@ -17,9 +35,9 @@ const CategoryComponent = ({ valueSearch, onChangeSearch }) => {
             <li
               key={Math.random()}
               className={`${index === idx ? "active" : ""}`}
-              onClick={() => handleClick(idx)}
+              onClick={() => handleClick(idx, value.category)}
             >
-              {value}
+              {value.label}
             </li>
           ))}
         </ul>

@@ -1,15 +1,14 @@
 import React from 'react'
-import Pic from '../../assets/images/saintseiya.png'
+import defaultImage from '../../assets/images/default-image.png'
 import './movie.css'
 
-const MovieCard = () => {
+const MovieCard = ({imagePath, title, onClick}) => {
   return (
-    <div className="container">
+    <div className="container" onClick={onClick}>
       <div className='card-container'>
-        <img src={Pic} alt="pic" />
+        <img src={imagePath ? `https://image.tmdb.org/t/p/w500/${imagePath}` : defaultImage} alt={title} />
       </div>
-      <p className='title'>Saint Seiya</p>
-      <p className='sub-title'>Anime</p>
+      <p className='title'>{title}</p>
     </div>
   )
 }

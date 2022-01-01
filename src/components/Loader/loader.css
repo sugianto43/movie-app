@@ -1,5 +1,7 @@
 .loading {
-  padding-top: 50%;
+  /* height: 100vh; */
+  padding-top: 15%;
+  padding-bottom: 15%;
   display: flex;
   justify-content: center;
 }
@@ -8,10 +10,10 @@
   margin: auto;
   border: 1rem solid white;
   border-radius: 50%;
-  border-top: 0.5rem solid rgb(5, 51, 65);
-  border-bottom: 0.5rem solid rgb(123, 214, 241);
-  border-left: 0.5rem solid rgb(123, 214, 241);
-  border-right: 0.5rem solid rgb(123, 214, 241);
+  border-top: 0.5rem solid #ffff;
+  border-bottom: 0.5rem solid #EB507F;
+  border-left: 0.5rem solid #EB507F;
+  border-right: 0.5rem solid #EB507F;
   width: 3rem;
   height: 3rem;
   animation: spin 1s linear infinite;

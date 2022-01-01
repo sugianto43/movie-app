@@ -1,17 +1,75 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import CategoryComponent from '../../components/CategoryComponent'
 import Hero from '../../components/Hero'
 import MovieCard from '../../components/MovieCard'
+import Loader from '../../components/Loader'
+import { useFetch } from '../../helpers/useFetch'
+import './home.css'
 
 const Home = () => {
+  // const ref = React.createRef();
+  const [movies, setMovies] = useState([]);
+  const [search, setSearch] = useState('');
+  const [category, setCategory] = useState("now_playing");
+  // const [start, setStart] = useState(false);
+  const [page, setPage] = useState(1);
+  const [totalPage,setTotalPage] = useState(1);
+  const {response, loading, error} = useFetch({
+    category,
+    method: "GET",
+    page,
+    // start
+  })
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 500, behavior: 
+      'smooth' 
+    })
+  }
+
+  const handleClickPrev = () => {
+    setPage(page - 1)
+    scrollToTop()
+  }
+
+  const handleClickNext = () => {
+    setPage(page + 1)
+    scrollToTop()
+  }
+
+  useEffect(() => {
+    if (response) {
+      setMovies(response.results);
+      setTotalPage(response.total_pages)
+      console.log("response", response);
+    }
+  }, [response])
+
+  useEffect(() => {
+    if(error) {
+      console.log('error fetch', error)
+    }
+  }, [error])
+
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
   return (
     <div>
       <Hero />
       <div style={{
         padding: "25px 150px"
       }}>
-        <CategoryComponent />
-        <div style={{
+        <CategoryComponent 
+          setCategory={setCategory}
+          setPage={setPage} 
+          valueSearch={search}
+          onChangeSearch={(e) => setSearch(e.target.value)}
+        />
+        {loading ? (
+          <Loader />
+        ) :(
+          <div id='scroller' style={{
           display: "grid",
           width: "100%",
           gridTemplateColumns: "repeat(5, 1fr)",
@@ -20,30 +78,35 @@ const Home = () => {
           gridRowGap: 45,
           marginTop: 67,
         }}>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6,].map(() => (
-            <MovieCard />
+          {movies && movies.filter((val) => {
+              if (setSearch === '') {
+                return val;
+              } if (
+                val.title
+                  .toLowerCase()
+                  .includes(search.toLowerCase())
+              ) {
+                return val;
+              }
+            }).map((movie) => (
+            <MovieCard 
+              key={movie.id}
+              imagePath={movie.poster_path}
+              title={movie.title}
+            />
           ))}
-        </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginTop: 65
-          }}
-        >
-          <div style={{
-            border: "1px solid #EB507F",
-            boxSizing: "border-box",
-            borderRadius: 50,
-            padding: "10px 15px",
-            background: "#EB507F",
-            marginRight: 10,
-            fontStyle: "normal",
-            fontWeight: 900,
-            fontSize: 18,
-            color: "#FFFFFF"
-          }}>
-            Load More
+        </div>)}
+        <div className='pagination'>
+          <div style={{width: "33%"}}>
+            {page !== 1 && <p className='prev' onClick={handleClickPrev}>Prev. Page </p>}
+          </div>
+
+          {/* <div className='center'> */}
+            <p className='center'>Page {page} of {totalPage}</p>
+          {/* </div> */}
+
+          <div style={{width: "33%"}}>
+            {page !== totalPage && <p className="next" onClick={handleClickNext}>Next Page</p>}
           </div>
         </div>
       </div>

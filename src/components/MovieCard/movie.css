@@ -5,6 +5,10 @@
   border-radius: 10px;
 }
 
+.container:hover {
+  cursor: pointer;
+}
+
 .card-container > img {
   width: 200px;
   height: 300px;
