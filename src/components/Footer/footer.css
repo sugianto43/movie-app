@@ -1,0 +1,67 @@
+footer {
+	background: #000000;
+	padding: 50px 165px;
+}
+
+footer > .content {
+	display: flex;
+	width: 100%;
+}
+
+footer > .content > .left {
+	width: 40%;
+}
+
+footer > .content > .center {
+	width: 30%;
+}
+
+footer > .content > .right {
+	width: 30%;
+}
+
+.content > .left > .footer-logo {
+	display: flex;
+	align-items: center;
+}
+
+.content > .left > .footer-logo > img {
+	width: 50px;
+	height: 35px;
+}
+
+.content > .left > .footer-logo > h2 {
+	font-weight: 500;
+	font-size: 25px;
+	font-style: normal;
+	padding-left: 20px;
+	color: #ffffff;
+}
+
+.content > .left > p {
+  padding-top: 20px;
+	font-style: normal;
+	font-weight: lighter;
+	font-size: 15px;
+	color: #ffffff;
+}
+
+.content > .center {
+  margin-left: 40px;
+}
+
+.content > .center > p {
+  padding-top: 20px;
+	font-style: normal;
+	font-weight: lighter;
+	font-size: 15px;
+	color: #ffffff;
+}
+
+.content > .right > p {
+  padding-top: 20px;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: #ffffff;
+}

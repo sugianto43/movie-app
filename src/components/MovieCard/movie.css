@@ -1,0 +1,33 @@
+.card-container {
+  overflow: hidden;
+  width: 200px;
+  height: 300px;
+  border-radius: 10px;
+}
+
+.card-container > img {
+  width: 200px;
+  height: 300px;
+  border-radius: 10px;
+}
+
+.card-container > img:hover {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: all 0.3s ease-out;
+}
+
+.container > .title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  color: #000000;
+}
+
+.container > .sub-title {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  color: #000000;
+}

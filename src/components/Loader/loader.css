@@ -1,0 +1,28 @@
+.loading {
+  padding-top: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.loader {
+  margin: auto;
+  border: 1rem solid white;
+  border-radius: 50%;
+  border-top: 0.5rem solid rgb(5, 51, 65);
+  border-bottom: 0.5rem solid rgb(123, 214, 241);
+  border-left: 0.5rem solid rgb(123, 214, 241);
+  border-right: 0.5rem solid rgb(123, 214, 241);
+  width: 3rem;
+  height: 3rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+      transform: rotate(0deg);
+  }
+
+  100% {
+      transform: rotate(360deg);
+  }
+}

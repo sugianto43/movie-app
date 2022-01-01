@@ -1,0 +1,23 @@
+header {
+  padding: 5px 150px;
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+}
+
+header > .header-logo {
+  width: 50px;
+  height: 35px;
+}
+
+header > h2 {
+  font-weight: 500;
+  line-height: 75px;
+  font-size: 25px;
+  font-style: normal;
+  padding-left: 20px;
+}
+
