@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { useEffect, useState } from 'react'
 import CategoryComponent from '../../components/CategoryComponent'
 import Hero from '../../components/Hero'
