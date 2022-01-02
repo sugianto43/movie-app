@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import Character from '../../components/Character'
 import Hero from '../../components/Hero'
 import Loader from '../../components/Loader'
 import Overview from '../../components/Overview'
@@ -62,9 +63,9 @@ function Detail() {
           />}
 
           {indexContent === 1 && 
-          <Review 
-            
-          />}
+          <Review />}
+
+          {indexContent === 2 && <Character />}
       </section>
     </div>
   )
