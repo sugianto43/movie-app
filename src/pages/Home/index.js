@@ -5,9 +5,10 @@ import MovieCard from '../../components/MovieCard'
 import Loader from '../../components/Loader'
 import { useFetch } from '../../helpers/useFetch'
 import './home.css'
+import { useHistory } from 'react-router'
 
 const Home = () => {
-  // const ref = React.createRef();
+  const history = useHistory();
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState("now_playing");
@@ -21,10 +22,18 @@ const Home = () => {
     // start
   })
 
+  useEffect(()=>{
+    window.scroll(0,0)
+  },[])
+
   const scrollToTop = () => {
     window.scrollTo({ top: 500, behavior: 
       'smooth' 
     })
+  }
+
+  const handleClickMovie = (id) => {
+    history.push(`/detail/${id}`)
   }
 
   const handleClickPrev = () => {
@@ -51,9 +60,6 @@ const Home = () => {
     }
   }, [error])
 
-  useEffect(()=>{
-    window.scrollTo(0,0)
-  },[])
   return (
     <div>
       <Hero />
@@ -93,6 +99,7 @@ const Home = () => {
               key={movie.id}
               imagePath={movie.poster_path}
               title={movie.title}
+              onClick={()=>handleClickMovie(movie.id)}
             />
           ))}
         </div>)}

@@ -6,7 +6,6 @@
 }
 
 .hero-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://image.tmdb.org/t/p/original/1Rr5SrvHxMXHu5RjKpaMba8VTzi.jpg');
   height: 500px;
   background-position: center;
   background-repeat: no-repeat;
@@ -17,11 +16,21 @@
 }
 
 .hero-text {
-  text-align: center;
+  text-align: left;
   position: absolute;
+  width: 750px;
   top: 40%;
-  left: 50%;
+  left: 40%;
   transform: translate(-50%, -50%);
   color: white;
   font-size: 30px;
+}
+
+.hero-text > div > h2 {
+  padding-bottom: 20px;
+}
+
+.hero-text > div > p {
+  font-size: 20px;
+  font-weight: lighter;
 }
